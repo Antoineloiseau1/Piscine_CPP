@@ -26,7 +26,8 @@ class PhoneBook
 		void	displayContacts(void) const;
 		
 	private:
-	
+		void	_displayInfos(void) const;
+		int	_index;
 		Contact	_entry[8];
 		
 };

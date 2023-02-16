@@ -19,7 +19,7 @@ int main(void)
 	PhoneBook	repertory;
 	std::string	buffer;
 	
-	std::cout << "Welcome to your own PhoneBook !" << std::endl;
+	std::cout << "Welcome to your the PhoneBook !" << std::endl;
 
 	do
 	{

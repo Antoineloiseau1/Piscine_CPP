@@ -23,7 +23,15 @@ class Contact
 		~Contact(void);
 
 		std::string getFirstName(void) const;
+		std::string getLastName(void) const;
+		std::string getNickName(void) const;
+		std::string getPhoneNumber(void) const;
+		std::string getDarkestSecret(void) const;
+		void	setLastName(void);
 		void	setFirstName(void);
+		void	setNickName(void);
+		void	setPhoneNumber(void);
+		void	setDarkestSecret(void);
 
 	private:
 	
