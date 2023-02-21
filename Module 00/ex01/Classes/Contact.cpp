@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:01:10 by antoine           #+#    #+#             */
-/*   Updated: 2023/02/15 17:28:59 by antoine          ###   ########.fr       */
+/*   Updated: 2023/02/21 13:50:18 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,45 +27,140 @@ Contact::~Contact(void)
 void	Contact::setFirstName(void)
 {
 	std::string buffer;
+	int			start;
+	int			end;
 	
-	std::cout << "Enter First Name: ";
-	std::getline(std::cin, buffer);
+	do
+	{
+		std::cout << "Enter First Name: ";
+		std::getline(std::cin, buffer);	
+		if (std::cin.eof())
+		{
+			std::cout << std::endl;
+			exit (0);
+		}
+		if (buffer.find_first_not_of(" ") == std::string::npos)
+			buffer = "";
+		else
+		{
+			start = buffer.find_first_not_of(" ");
+			end = buffer.find_last_not_of(" ") - start + 1;
+			buffer = buffer.substr(start, end);
+		}
+	}while (buffer == "");
 	this->_firstName = buffer;
 }
 
 void	Contact::setLastName(void)
 {
 	std::string buffer;
+	int			start;
+	int			end;
 	
-	std::cout << "Enter Last Name: ";
-	std::getline(std::cin, buffer);
+	do
+	{
+		std::cout << "Enter Last Name: ";
+		std::getline(std::cin, buffer);	
+		if (std::cin.eof())
+		{
+			std::cout << std::endl;
+			exit (0);
+		}
+		if (buffer.find_first_not_of(" ") == std::string::npos)
+			buffer = "";
+		else
+		{
+			start = buffer.find_first_not_of(" ");
+			end = buffer.find_last_not_of(" ") - start + 1;
+			buffer = buffer.substr(start, end);
+		}
+	}while (buffer == "");
 	this->_lastName = buffer;
 }
 
 void	Contact::setNickName(void)
 {
 	std::string buffer;
+	int			start;
+	int			end;
 	
-	std::cout << "Enter Nick Name: ";
-	std::getline(std::cin, buffer);
+	do
+	{
+		std::cout << "Enter Nickname: ";
+		std::getline(std::cin, buffer);	
+		if (std::cin.eof())
+		{
+			std::cout << std::endl;
+			exit (0);
+		}
+		if (buffer.find_first_not_of(" ") == std::string::npos)
+			buffer = "";
+		else
+		{
+			start = buffer.find_first_not_of(" ");
+			end = buffer.find_last_not_of(" ") - start + 1;
+			buffer = buffer.substr(start, end);
+		}
+	}while (buffer == "");
 	this->_nickName = buffer;
 }
 
 void	Contact::setPhoneNumber(void)
 {
 	std::string buffer;
+	int			start;
+	int			end;
 	
-	std::cout << "Enter Phone Number: ";
-	std::getline(std::cin, buffer);
+	do
+	{
+		std::cout << "Enter Phone Number: ";
+		std::getline(std::cin, buffer);	
+		if (std::cin.eof())
+		{
+			std::cout << std::endl;
+			exit (0);
+		}
+		if (buffer.find_first_not_of(" ") == std::string::npos)
+			buffer = "";
+		else
+		{
+			start = buffer.find_first_not_of(" ");
+			end = buffer.find_last_not_of(" ") - start + 1;
+			buffer = buffer.substr(start, end);
+		}
+		if (buffer.find_first_not_of("+0123456789") != std::string::npos)
+		{
+			buffer = "";
+			std::cout << "Please enter a valid phone number" << std::endl;
+		}
+	}while (buffer == "");
 	this->_phoneNumber = buffer;
 }
 
 void	Contact::setDarkestSecret(void)
 {
 	std::string buffer;
+	int			start;
+	int			end;
 	
-	std::cout << "What is your darkest secret ?: ";
-	std::getline(std::cin, buffer);
+	do
+	{
+		std::cout << "Enter Your Darkest Secret: ";
+		std::getline(std::cin, buffer);	
+		if (std::cin.eof())
+		{
+			std::cout << std::endl;
+			exit (0);
+		}
+		if (buffer.find_first_not_of(" ") == std::string::npos)
+			buffer = "";
+		else
+		{
+			start = buffer.find_first_not_of(" ");
+			end = buffer.find_last_not_of(" ") - start + 1;
+			buffer = buffer.substr(start, end);
+		}
+	}while (buffer == "");
 	this->_darkestSecret = buffer;
 }
 

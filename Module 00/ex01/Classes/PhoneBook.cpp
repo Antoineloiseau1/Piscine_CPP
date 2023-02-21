@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:59:50 by antoine           #+#    #+#             */
-/*   Updated: 2023/02/15 17:25:08 by antoine          ###   ########.fr       */
+/*   Updated: 2023/02/21 13:52:17 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ PhoneBook::PhoneBook(void) : _index(0)
 
 PhoneBook::~PhoneBook(void)
 {
-	std::cout << "Please come back anytime" << std::endl;
+	std::cout << "Contacts erased" << std::endl;
 }
 
 void	PhoneBook::addContact(void)
@@ -85,24 +85,33 @@ void	PhoneBook::displayContacts(void) const
 void	PhoneBook::_displayInfos(void) const
 {
 	std::string	buffer;
-	int		index;		
+	int			index;		
 
 	do
 	{
+		index = 0;
 		std::cout << "Which contact would you like to see ? [1 - 8]: ";
-		std::cin >> index;
-		std::cout << "index = " << index << std::endl;
-		if (index >= 1 && index <= 8)
+		std::getline(std::cin, buffer);
+		if (std::cin.eof())
 		{
-			std::cout << "First Name: " << this->_entry[index -1].getFirstName() << std::endl;
-			std::cout << "Last Name: " << this->_entry[index - 1].getLastName() << std::endl;
-			std::cout << "Nick Name: " << this->_entry[index - 1].getNickName() << std::endl;
-			std::cout << "Phone Number: " << this->_entry[index - 1].getPhoneNumber() << std::endl;
-			std::cout << "Darkest Secret: " << this->_entry[index - 1].getDarkestSecret() << std::endl;
+			std::cout << std::endl;
+			exit (0);
 		}
+		else if (buffer.length() > 1)
+			;
+		else if (buffer == "" || buffer.find_first_not_of("0123456789") != std::string::npos)
+			;
 		else
-			std::cout << "Wrong index format" << std::endl;
-	}while(!(index >= 1 && index <= 8));
+			index = std::stoi(buffer);
+	if (index >= 1 && index <= 8)
+	{
+		std::cout << "First Name: " << this->_entry[index -1].getFirstName() << std::endl;
+		std::cout << "Last Name: " << this->_entry[index - 1].getLastName() << std::endl;
+		std::cout << "Nick Name: " << this->_entry[index - 1].getNickName() << std::endl;
+		std::cout << "Phone Number: " << this->_entry[index - 1].getPhoneNumber() << std::endl;
+		std::cout << "Darkest Secret: " << this->_entry[index - 1].getDarkestSecret() << std::endl;
+	}	
+	}while (index == 0 || !(index >= 0 && index <= 8));
 }
 
 

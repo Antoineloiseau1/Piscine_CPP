@@ -1,6 +1,6 @@
 NAME	=	PhoneBook
 
-SCRS	=	repertory.cpp ./Classes/PhoneBook.cpp ./Classes/Contact.cpp
+SCRS	=	main.cpp ./Classes/PhoneBook.cpp ./Classes/Contact.cpp
 
 OBJS	=	${SCRS:.cpp=.o}
 
