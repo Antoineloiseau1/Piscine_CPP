@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:35:27 by antoine           #+#    #+#             */
-/*   Updated: 2023/02/15 17:21:47 by antoine          ###   ########.fr       */
+/*   Updated: 2023/02/21 14:04:07 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class PhoneBook
 		
 	private:
 		void	_displayInfos(void) const;
-		int	_index;
+		int		_index;
 		Contact	_entry[8];
 		
 };

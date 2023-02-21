@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 12:02:16 by antoine           #+#    #+#             */
-/*   Updated: 2023/02/21 13:59:43 by antoine          ###   ########.fr       */
+/*   Updated: 2023/02/21 14:04:43 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int main(void)
 	std::string	buffer;
 	
 	std::cout << "Welcome to your the PhoneBook !" << std::endl;
-
 	do
 	{
 		std::cout << "What would you like to do ?: [ADD] [SEARCH] [EXIT]: ";

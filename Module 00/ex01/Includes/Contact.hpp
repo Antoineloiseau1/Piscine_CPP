@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:51:53 by antoine           #+#    #+#             */
-/*   Updated: 2023/02/15 17:29:18 by antoine          ###   ########.fr       */
+/*   Updated: 2023/02/21 14:06:05 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ class Contact
 		std::string getNickName(void) const;
 		std::string getPhoneNumber(void) const;
 		std::string getDarkestSecret(void) const;
-		void	setLastName(void);
-		void	setFirstName(void);
-		void	setNickName(void);
-		void	setPhoneNumber(void);
-		void	setDarkestSecret(void);
+		void		setLastName(void);
+		void		setFirstName(void);
+		void		setNickName(void);
+		void		setPhoneNumber(void);
+		void		setDarkestSecret(void);
 
 	private:
 	
