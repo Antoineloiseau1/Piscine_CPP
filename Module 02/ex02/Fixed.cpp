@@ -3,35 +3,31 @@
 
 // Default constructor
 Fixed::Fixed(void) : _fixedPointValue(0) {
-	std::cout << "Default constructor called" << std::endl;
+	return ;
 }
 
 // Default int constructor
 Fixed::Fixed(int const i) {
-	std::cout << "Int constructor called" << std::endl;
 	this->_fixedPointValue = i << _nbFractionnalBits;
 }
 
 // Default float constructor
 Fixed::Fixed(float const f) {
-	std::cout << "Float constructor called" << std::endl;
 	this->_fixedPointValue = (roundf(f * (1 << _nbFractionnalBits)));
 }
 
 // Copy constructor
 Fixed::Fixed(Fixed const& src) {
-	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
 }
 
 // Destructor
 Fixed::~Fixed(void) {
-	std::cout << "Destructor called" << std::endl;
+	return ;
 }
 
 // Assignment constructor
 Fixed&	Fixed::operator=(Fixed const& rhs) {
-	std::cout << "Copy assignment operator called" << std::endl;
 	if (this != &rhs)
 		this->_fixedPointValue = rhs.getRawBits();
 	return *this;
@@ -55,6 +51,56 @@ float	Fixed::toFloat(void) const {
 // Converts the fixed point value to int
 int	Fixed::toInt(void) const {
 	return (this->_fixedPointValue >> _nbFractionnalBits);
+}
+
+Fixed	Fixed::operator+(Fixed const& rhs) const {
+	return Fixed(this->toFloat() + rhs.toFloat());
+}
+
+Fixed	Fixed::operator-(Fixed const& rhs) const {
+	return Fixed(this->toFloat() - rhs.toFloat());
+}
+
+Fixed	Fixed::operator*(Fixed const& rhs) const {
+	return Fixed(this->toFloat() * rhs.toFloat());
+}
+
+Fixed	Fixed::operator/(Fixed const& rhs) const {
+	return Fixed(this->toFloat() / rhs.toFloat());
+}
+
+// More than operator overload
+bool	Fixed::operator>(Fixed const& rhs) const {
+	return this->toFloat() > rhs.toFloat();
+}
+
+// less than operator overload
+bool	Fixed::operator<(Fixed const& rhs) const {
+	return this->toFloat() < rhs.toFloat();
+}
+
+// less or equal than operator overload
+bool	Fixed::operator<=(Fixed const& rhs) const {
+	return this->toFloat() <= rhs.toFloat();
+}
+
+// more or equal than operator overload
+bool	Fixed::operator>=(Fixed const& rhs) const {
+	return this->toFloat() >= rhs.toFloat();
+}
+
+// Strictly equal operator overload
+bool	Fixed::operator==(Fixed const& rhs) const {
+	return this->toFloat() == rhs.toFloat();
+}
+
+// Different than operator overload
+bool	Fixed::operator!=(Fixed const& rhs) const {
+	return this->toFloat() != rhs.toFloat();
+}
+
+void	Fixed::operator++() {
+	this->_fixedPointValue++;
 }
 
 // insertion operator overload 
