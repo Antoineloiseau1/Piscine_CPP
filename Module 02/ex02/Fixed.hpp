@@ -12,11 +12,11 @@ class Fixed
 
 	public:
 
-		Fixed(void);							//default constructor
-		Fixed(int const i);						//int paramater constructor
-		Fixed(float const f);					//float parameter constructor
-		Fixed(Fixed const &src);				//copy constructor
-		~Fixed(void);							//destructor
+		Fixed(void);								//default constructor
+		Fixed(int const i);							//int paramater constructor
+		Fixed(float const f);						//float parameter constructor
+		Fixed(Fixed const &src);					//copy constructor
+		~Fixed(void);								//destructor
 		
 		//Arithmecis Operators
 		Fixed&	operator=(Fixed const &rhs);		//assignation overload
@@ -34,10 +34,16 @@ class Fixed
 		bool	operator!=(Fixed const& rhs) const;
 
 		/* Increment / Decrament Operators*/
-		void	operator++();
+		Fixed&	operator++();							//Pre-Increment Overload					
+		Fixed&	operator--();							//Pre-Decrement Overload
+		Fixed	operator++(int);						//Post-Increment Overlad
+		Fixed	operator--(int);						//Post-Decrement Overload
 
-
-
+		/* Min et Max */
+		static Fixed&	min(Fixed& a, Fixed& b);
+		static Fixed const	&min(Fixed const &a, Fixed const &b);
+		static Fixed&	max(Fixed& a, Fixed& b);
+		static Fixed const	&max(Fixed const &a, Fixed const &b);
 
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);

@@ -99,8 +99,42 @@ bool	Fixed::operator!=(Fixed const& rhs) const {
 	return this->toFloat() != rhs.toFloat();
 }
 
-void	Fixed::operator++() {
+Fixed&	Fixed::operator++() {
 	this->_fixedPointValue++;
+	return *this;
+}
+
+Fixed&	Fixed::operator--() {
+	this->_fixedPointValue--;
+	return *this;
+}
+
+Fixed	Fixed::operator++(int) {
+	Fixed temp = *this;
+	this->_fixedPointValue++;
+	return temp;
+}
+
+Fixed	Fixed::operator--(int) {
+	Fixed temp = *this;
+	this->_fixedPointValue--;
+	return temp;
+}
+
+Fixed&	Fixed::min(Fixed& a, Fixed& b) {
+	return (a < b) ? a : b;
+}
+
+Fixed&	Fixed::max(Fixed& a, Fixed& b) {
+	return ((a > b) ? a : b);
+}
+
+Fixed const	&Fixed::min(Fixed const &a, Fixed const &b) {
+	return (a < b) ? a : b;
+}
+
+Fixed const	&Fixed::max(Fixed const &a, Fixed const &b) {
+	return (a > b) ? a : b;
 }
 
 // insertion operator overload 
