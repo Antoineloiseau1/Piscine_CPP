@@ -3,14 +3,14 @@
 
 
 /* Default Constructor */
-ClapTrap::ClapTrap(void) : _name("ClapTrap"), _hitPoints(100), _energyPoints(50) , _attackDamage(20) {
+ClapTrap::ClapTrap(void) : _name("ClapTrap"), _hitPoints(10), _energyPoints(10) , _attackDamage(0) {
 	this->_maxHitPoints = this->_hitPoints;
 	std::cout << "ClapTrap " << this->_name << " has been created by god himslef" << std::endl;
 }
 
 
 /* Parametric Constructor */
-ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(100), _energyPoints(50), _attackDamage(20) {
+ClapTrap::ClapTrap(std::string name) : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
 	this->_maxHitPoints = this->_hitPoints;
 	std::cout << "ClapTrap " << this->_name << " has been created by god himself" << std::endl;
 }
@@ -31,6 +31,7 @@ ClapTrap&	ClapTrap::operator=(ClapTrap const &rhs) {
 		this->_hitPoints = rhs.getHitPoints();
 		this->_energyPoints = rhs.getEnergyPoints();
 		this->_attackDamage = rhs.getAttackDamage();
+		this->_maxHitPoints = rhs.getMaxHitPoints();
 		std::cout << "ScavTrap " << this->_name << " has been assigned from " << &rhs << std::endl;
 	}
 	return *this;
@@ -41,6 +42,9 @@ const std::string&	ClapTrap::getName(void) const{
 	return this->_name;
 }
 
+int ClapTrap::getMaxHitPoints(void) const {
+	return this->_maxHitPoints;
+}
 
 int	ClapTrap::getHitPoints(void) const{
 	return this->_hitPoints;

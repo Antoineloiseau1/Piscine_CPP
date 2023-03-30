@@ -4,6 +4,10 @@
 
 /* Deefault Constructor */
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
+	this->_maxHitPoints = this->_hitPoints;
 	std::cout << "ScavTrap " << this->getName() << " has been ";
 	std::cout << "created out of a wonderful ClapTrap body" << std::endl;
 }
@@ -11,6 +15,10 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
 
 /* Parametric Constructor */
 ScavTrap::ScavTrap(void) : ClapTrap("ScavTrap") {
+	this->_hitPoints = 100;
+	this->_energyPoints = 50;
+	this->_attackDamage = 20;
+	this->_maxHitPoints = this->_hitPoints;
 	std::cout << "ScavTrap " << this->getName() << " has been ";
 	std::cout << "created out of a wonderful ClapTrap body" << std::endl;
 }
@@ -31,6 +39,7 @@ ScavTrap&	ScavTrap::operator=(ScavTrap const &rhs) {
 		this->_hitPoints = rhs.getHitPoints();
 		this->_energyPoints = rhs.getEnergyPoints();
 		this->_attackDamage = rhs.getAttackDamage();
+		this->_maxHitPoints = rhs.getMaxHitPoints();
 		std::cout << "ScavTrap " << this->_name << " has been assigned from " << &rhs << std::endl;
 	}
 	return *this;
