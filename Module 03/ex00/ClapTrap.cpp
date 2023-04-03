@@ -32,18 +32,21 @@ ClapTrap&	ClapTrap::operator=(ClapTrap const &rhs) {
 		this->_energyPoints = rhs.getEnergyPoints();
 		this->_attackDamage = rhs.getAttackDamage();
 		this->_maxHitPoints = rhs.getMaxHitPoints();
-		std::cout << "ScavTrap " << this->_name << " has been assigned from " << &rhs << std::endl;
+		std::cout << "ClapTrap " << this->_name << " has been assigned from " << &rhs << std::endl;
 	}
 	return *this;
 }
+
 
 const std::string&	ClapTrap::getName(void) const{
 	return this->_name;
 }
 
-int	ClapTrap::getMaxHitPoints(void) const {
+
+int	ClapTrap::getMaxHitPoints(void) const{
 	return this->_maxHitPoints;
 }
+
 
 int	ClapTrap::getHitPoints(void) const{
 	return this->_hitPoints;
