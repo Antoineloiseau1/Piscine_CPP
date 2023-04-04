@@ -1,25 +1,25 @@
-#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
 
 int main(void)
 {
-	FragTrap	richard("Richard");
-	FragTrap	brandon("Brandon");
-	FragTrap	Jessica(richard);
-	Jessica = brandon;
-	
+
+	DiamondTrap stacy("Stacy");
+	DiamondTrap	hillary;
+
 	std::cout << std::endl;
 	for(int i = 0; i < 6; i++)
 	{	
-		std::cout << "{" << brandon.getName() << "}: HP{" << brandon.getHitPoints() << "}" << std::endl;
-		richard.attack(brandon.getName());
-		brandon.takeDamage(richard.getAttackDamage());
-		std::cout << "{" << brandon.getName() << "}: HP{" << brandon.getHitPoints() << "}" << std::endl;
-		brandon.beRepaired(10);
-		std::cout << "{" << brandon.getName() << "}: HP{" << brandon.getHitPoints() << "} EP{" << brandon.getEnergyPoints() << "}" << std::endl;
+		std::cout << "{" << hillary.getName() << "}: HP{" << hillary.getHitPoints() << "}" << std::endl;
+		stacy.attack(hillary.getName());
+		hillary.takeDamage(stacy.getAttackDamage());
+		std::cout << "{" << hillary.getName() << "}: HP{" << hillary.getHitPoints() << "}" << std::endl;
+		hillary.beRepaired(10);
+		std::cout << "{" << hillary.getName() << "}: HP{" << hillary.getHitPoints() << "} EP{" << hillary.getEnergyPoints() << "}" << std::endl;
 		std::cout << std::endl;
 	}
-	richard.highFiveGuys();
-
+	stacy.highFiveGuys();
+	hillary.guardGate();
+	stacy.whoAmI();
 	return (0);
 }

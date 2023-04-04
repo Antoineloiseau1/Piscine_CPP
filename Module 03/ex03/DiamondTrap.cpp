@@ -8,7 +8,7 @@ DiamondTrap::DiamondTrap(void) : ClapTrap("ClapTrap_clap_name"), ScavTrap(), Fra
 	this->_attackDamage = FragTrap::_attackDamage;
 	this->_maxHitPoints = this->_hitPoints;
 	std::cout << "DiamondTrap " << this->_name;
-	std::cout << " monstruosity is the result of the union between a ScavTrap and a FragTrap"; 
+	std::cout << " this monstruosity is the result of the union between a ScavTrap and a FragTrap"; 
 	std::cout << std::endl;
 }
 
@@ -19,7 +19,7 @@ DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name + "_clap_name"), Scav
 	this->_attackDamage = FragTrap::_attackDamage;
 	this->_maxHitPoints = this->_hitPoints;
 	std::cout << "DiamondTrap " << this->_name;
-	std::cout << " monstruosity is the result of the union between a ScavTrap and a FragTrap"; 
+	std::cout << " this monstruosity is the result of the union between a ScavTrap and a FragTrap"; 
 	std::cout << std::endl;
 }
 
@@ -38,13 +38,13 @@ DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& rhs) {
 		this->_attackDamage = rhs.getAttackDamage();
 		this->_maxHitPoints = rhs.getMaxHitPoints();
 	}
-		std::cout << "DiamondTrap " << this->_name << " has been assigned from " << &rhs << std::endl;
+	std::cout << "DiamondTrap " << this->_name << " has been assigned from " << &rhs << std::endl;
 	return *this;
 }
 
 DiamondTrap::~DiamondTrap(void) {
 	std::cout << "DiamondTrap " << this->_name;
-	std::cout << " was just a bad dream" << std::endl;
+	std::cout << " is now just an old bad dream" << std::endl;
 }
 
 void	DiamondTrap::attack(const std::string &target) {
