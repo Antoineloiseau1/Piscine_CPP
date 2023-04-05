@@ -6,14 +6,16 @@ OBJS	=	${SRCS:.cpp=.o}
 
 CC		=	c++
 
-FLAGS	=	-Wall -Werror -Wextra -std=c++98
+FLAGS	=	-g -Wall -Werror -Wextra -std=c++98
+
+#DEBUG 	=	-fsanitize=address
 
 RM		=	rm -rf
 
 all:		${NAME}
 
 ${NAME}:	${OBJS}
-			${CC} ${FLAGS} ${OBJS} -o ${NAME}
+			${CC} ${FLAGS} ${DEBUG} ${OBJS} -o ${NAME}
 
 clean:
 			${RM} ${OBJS}

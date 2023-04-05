@@ -10,16 +10,13 @@ Animal::Animal(std::string type) : _type(type) {
 	std::cout << this->_type << "\" type" << std::endl;
 }
 
-Animal::Animal(const Animal &src) {
-	*this = src;
+Animal::Animal(const Animal &src) : _type(src.getType()) {
 	std::cout << "Animal Copy Constructor Called" << std::endl;
 }
 
 Animal&	Animal::operator=(const Animal& rhs) {
 	if (this != &rhs)
-	{
-		this->_type = rhs._type;
-	}
+		this->_type = rhs.getType();
 	std::cout << "Animal Assigment Operator Overload Called" << std::endl;
 	return *this;
 }

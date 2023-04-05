@@ -18,6 +18,8 @@ class Dog: public Animal {
 		~Dog(void);
 
 		virtual void	makeSound(void) const override;
+		Brain*	getBrain(void) const;
+		void	displayIdeas(int start, int end) const;
 };
 
 #endif
