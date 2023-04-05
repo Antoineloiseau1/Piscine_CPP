@@ -17,9 +17,7 @@ WrongAnimal::WrongAnimal(const WrongAnimal &src) {
 
 WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& rhs) {
 	if (this != &rhs)
-	{
-		this->_type = rhs._type;
-	}
+		this->_type = rhs.getType();
 	std::cout << "WrongAnimal Assigment Operator Overload Called" << std::endl;
 	return *this;
 }

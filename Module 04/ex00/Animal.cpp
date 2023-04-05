@@ -18,7 +18,7 @@ Animal::Animal(const Animal &src) {
 Animal&	Animal::operator=(const Animal& rhs) {
 	if (this != &rhs)
 	{
-		this->_type = rhs._type;
+		this->_type = rhs.getType();
 	}
 	std::cout << "Animal Assigment Operator Overload Called" << std::endl;
 	return *this;

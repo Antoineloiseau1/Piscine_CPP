@@ -8,14 +8,12 @@ Dog::Dog(void) : Animal("Dog") {
 
 Dog::Dog(const Dog &src) {
 	*this = src;
-	std::cout << this->_type << "Copy Constructor Called" << std::endl;
+	std::cout << this->_type << " Copy Constructor Called" << std::endl;
 }
 
 Dog&	Dog::operator=(const Dog &rhs) {
 	if (this != &rhs)
-	{
 		this->_type = rhs._type;
-	}
 	return *this;
 }
 

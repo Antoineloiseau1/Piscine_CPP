@@ -8,22 +8,19 @@ Cat::Cat(void) : Animal("Cat") {
 
 Cat::Cat(const Cat &src) {
 	*this = src;
-	std::cout << this->_type << "Copy Constructor Called" << std::endl;
+	std::cout << this->_type << " Copy Constructor Called" << std::endl;
 }
 
 Cat&	Cat::operator=(const Cat &rhs) {
 	if (this != &rhs)
-	{
-		this->_type = rhs._type;
-	}
+		this->_type = rhs.getType();
 	return *this;
 }
 
-Cat::~Cat(void)
-{
+Cat::~Cat(void) {
 	std::cout << this->_type << " Desctructor Called" << std::endl;
 }
 
-void	Cat::makeSound(void) const{
+void	Cat::makeSound(void) const {
 	std::cout << "* Meow *" << std::endl;
 }
