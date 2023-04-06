@@ -3,23 +3,28 @@
 #include "Ice.hpp"
 #include "Cure.hpp"
 #include <iostream>
+#include "MateriaSource.hpp"
 
-int main() {
+int main()
+{
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 
-	AMateria	*a = new Ice;
-	AMateria	*b = new Cure;
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
 
-	AMateria *c = a->clone();
-	AMateria *d = b->clone();
-	Character	bob;
-	// std::cout << a->getType() << ": ";
-	// std::cout << a->use() << std::endl;
-	// std::cout << b->getType() << ": ";
-	// std::cout << b->use() << std::endl;
-	delete a;
-	delete b;
-	delete c;
-	delete d;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
 
-	return (0);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+	return 0;
 }
