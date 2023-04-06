@@ -1,4 +1,5 @@
 #include "MateriaSource.hpp"
+#include <iostream>
 
 /* Default Consctructor */
 MateriaSource::MateriaSource(void) : _idx(0) {
@@ -26,16 +27,19 @@ MateriaSource &	MateriaSource::operator=(const MateriaSource & rhs) {
 }
 
 void	MateriaSource::learnMateria(AMateria *materia) {
-	if (this->_idx > 3)
-		return ;
-	this->_items[this->_idx] = materia;
-	this->_idx++;
+	for (int i = 0; i < 4; i++)
+	{
+		if (this->_items[i] == NULL)
+		{
+			this->_items[i] = materia;
+			break;
+		}
+	}
 }
-
 AMateria* MateriaSource::createMateria(std::string const & type) {
 	for(int i = 0; i < 4; i++)
 	{
-		if (this->_items[i]->getType() == type)
+		if (this->_items[i] && this->_items[i]->getType() == type)
 			return this->_items[i]->clone();
 	}
 	return 0;

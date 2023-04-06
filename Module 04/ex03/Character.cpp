@@ -1,4 +1,5 @@
 #include "Character.hpp"
+#include <iostream>
 
 /* Default Constructor */
 Character::Character(void) : Character("Unknown Adventurer") {}
@@ -12,18 +13,18 @@ Character::Character(std::string name) : _name(name) {
 /* Copy Constructor */
 Character::Character(const Character & src) {
 	this->_name = src.getName();
-	for (int i = 0; i < 4; i++) {
-			this->_materia[i] = src.getMateria(i)->clone();
-		}
+	for (int i = 0; i < 4; i++) 
+		this->_materia[i] = src.getMateria(i)->clone();
 }
 
 /* Assignement Operator */
 Character &	Character::operator=(const Character & rhs) {
-	if (this != &rhs) {
+	if (this != &rhs) 
+	{
 		this->_name = rhs.getName();
-		for (int i = 0; i < 4; i++) {
-			if (this->_materia[i] != NULL)
-				delete this->_materia[i];
+		for (int i = 0; i < 4; i++) 
+		{
+			delete this->_materia[i];
 			this->_materia[i] = rhs.getMateria(i)->clone();
 		}
 	}
