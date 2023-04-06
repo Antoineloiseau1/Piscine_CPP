@@ -5,6 +5,7 @@
 
 # include "ICharacter.hpp"
 # include "AMateria.hpp"
+# include <string>
 
 class Character: public ICharacter {
 
@@ -18,7 +19,7 @@ class Character: public ICharacter {
 		/* Canonical form Constructors */
 		Character(void);
 		Character(std::string name);
-		Character(const Character * src);
+		Character(const Character & src);
 		Character & operator=(const Character & rhs);
 		~Character(void);
 

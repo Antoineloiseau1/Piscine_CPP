@@ -3,9 +3,8 @@
 #ifndef MATERIASOURCE_HPP
 # define MATERIASOURCE_HPP
 
-# include "IMateriaSource.hpp"
-# include <string>
-# include "AMateria.hpp"
+#include "IMateriaSource.hpp"
+#include "AMateria.hpp"
 
 class MateriaSource: public IMateriaSource {
 
@@ -22,8 +21,8 @@ class MateriaSource: public IMateriaSource {
 		~MateriaSource(void);
 
 		std::string	getType(int idx) const;
-		void learnMateria(AMateria*) override;
-		AMateria* createMateria(std::string const & type) override;
+		void learnMateria(AMateria*);
+		AMateria* createMateria(std::string const & type);
 };
 
 #endif

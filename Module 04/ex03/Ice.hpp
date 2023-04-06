@@ -1,7 +1,7 @@
 #ifndef ICE_HPP
 # define ICE_HPP
 
-# include "AMateria.hpp"
+#include "AMateria.hpp"
 
 class Ice: public AMateria {
 
@@ -13,7 +13,7 @@ class Ice: public AMateria {
 		~Ice(void);
 
 		Ice* clone(void) const;
-		void	use(ICharacter & target) override;
+		void	use(ICharacter & target);
 };
 
 #endif

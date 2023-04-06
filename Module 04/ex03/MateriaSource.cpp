@@ -1,6 +1,4 @@
 #include "MateriaSource.hpp"
-#include "Ice.hpp"
-#include "Cure.hpp"
 
 /* Default Consctructor */
 MateriaSource::MateriaSource(void) : _idx(0) {

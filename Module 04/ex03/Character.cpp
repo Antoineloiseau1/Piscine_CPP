@@ -1,22 +1,17 @@
 #include "Character.hpp"
-#include <iostream>
-#include <Cure.hpp>
-#include <Ice.hpp>
 
 /* Default Constructor */
-Character::Character(void) : Character("Unknown Adventurer") {
-	return ;
-}
+Character::Character(void) : Character("Unknown Adventurer") {}
 
 /* Parametric Constructor */
 Character::Character(std::string name) : _name(name) {
 	for (int i = 0; i < 4; i++)
 		this->_materia[i] = NULL;
-	std::cout << this->getName() << " entered the world" << std::endl; 
 }
 
 /* Copy Constructor */
-Character::Character(const Character & src) : Character(src) {
+Character::Character(const Character & src) {
+	this->_name = src.getName();
 	for (int i = 0; i < 4; i++) {
 			this->_materia[i] = src.getMateria(i)->clone();
 		}
@@ -47,10 +42,13 @@ std::string const & Character::getName(void) const {
 
 /* Save Materia m in the first available slot in _materia[] */
 void	Character::equip(AMateria* m) {
-	int	i = 0;
-	while (i < 4) {
+	for (int i = 0; i < 4; i++)
+	{
 		if (this->_materia[i] == NULL)
+		{
 			this->_materia[i] = m;
+			break;
+		}
 	}
 }
 
