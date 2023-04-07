@@ -1,5 +1,4 @@
 #include "Character.hpp"
-#include <iostream>
 
 /* Default Constructor */
 Character::Character(void) : Character("Unknown Adventurer") {}

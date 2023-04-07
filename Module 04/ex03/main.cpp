@@ -17,7 +17,6 @@ int main()
 			src->learnMateria(new Cure);
 
 	}
-
 	ICharacter* me = new Character("me");
 
 	/* Create and Equip */
@@ -35,7 +34,7 @@ int main()
 	ICharacter* bob = new Character("bob");
 
 	/* Use or unequip */
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 6; i++)
 	{
 		me->unequip(i);
 		me->use(i, *bob);

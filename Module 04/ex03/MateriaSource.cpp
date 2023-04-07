@@ -1,14 +1,13 @@
 #include "MateriaSource.hpp"
-#include <iostream>
 
 /* Default Consctructor */
-MateriaSource::MateriaSource(void) : _idx(0) {
+MateriaSource::MateriaSource(void) {
 	for (int i = 0; i < 4; i++)
 		this->_items[i] = NULL;
 }
 
 /* Copy Constructor*/
-MateriaSource::MateriaSource(const MateriaSource & src) : _idx(src._idx){
+MateriaSource::MateriaSource(const MateriaSource & src) {
 	for (int i = 0; i < 4; i++)
 		this->_items[i] = src._items[i]->clone();
 }
@@ -16,7 +15,6 @@ MateriaSource::MateriaSource(const MateriaSource & src) : _idx(src._idx){
 MateriaSource &	MateriaSource::operator=(const MateriaSource & rhs) {
 	if (this != &rhs)
 	{
-		this->_idx = rhs._idx;
 		for (int i = 0; i < 4; i++)
 		{
 			delete this->_items[i];
