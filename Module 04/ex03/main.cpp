@@ -7,41 +7,39 @@
 
 int main()
 {
+	/* Learning Materias */
 	IMateriaSource* src = new MateriaSource();
-	src->learnMateria(new Ice());
+	for (int i = 0; i < 10; i++)
+	{
+		if (i % 2 == 0 )
+			src->learnMateria(new Ice);
+		else
+			src->learnMateria(new Cure);
+
+	}
 
 	ICharacter* me = new Character("me");
 
+	/* Create and Equip */
 	AMateria* tmp;
-	tmp = src->createMateria("ice");
-	me->equip(tmp);
-	std::cout << "Materia of type \"" << tmp->getType() << "\" has address: " << tmp << std::endl;
-	tmp = src->createMateria("cure"); //Does not exists yet
-	me->equip(tmp);
-	me->use(1, *me);
-	src->learnMateria(new Cure());
-	tmp = src->createMateria("cure"); 
-	std::cout << "Materia of type \"" << tmp->getType() << "\" has address: " << tmp << std::endl;
-	me->equip(tmp);
-	for (int i = 0; i < 3; i++)
+	for (int i = 0; i < 5; i++)
 	{
-		if (i / 2 < 5)
+		if (i % 2 == 0)
 			tmp = src->createMateria("ice");
 		else
 			tmp = src->createMateria("cure");
-		std::cout << "Materia of type \"" << tmp->getType() << "\" has address: " << tmp << std::endl;
+		std::cout << "Materia of type \"" << tmp->getType() << "\" with address: " << tmp << " equiped" << std::endl;
 		me->equip(tmp);
 	}
 
 	ICharacter* bob = new Character("bob");
 
-	for (int i = 0; i < 10; i++)
+	/* Use or unequip */
+	for (int i = 0; i < 3; i++)
 	{
-		me->use(i, *bob);
 		me->unequip(i);
 		me->use(i, *bob);
 	}
-
 
 	delete bob;
 	delete me;

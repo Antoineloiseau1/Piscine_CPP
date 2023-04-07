@@ -13,6 +13,8 @@ AMateria&	AMateria::operator=(const AMateria & rhs) {
 AMateria::~AMateria(void) {}
 
 std::string const AMateria::getType(void) const {
+	if (this == NULL)
+		return "empty";
 	return this->_type;
 }
 

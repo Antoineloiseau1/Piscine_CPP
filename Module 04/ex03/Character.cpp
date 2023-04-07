@@ -48,15 +48,17 @@ void	Character::equip(AMateria* m) {
 		if (this->_materia[i] == NULL)
 		{
 			this->_materia[i] = m;
-			break;
+			return ;
 		}
 	}
+	delete m; // fallen
 }
 
 /* Discard Materia[idx] */
 void	Character::unequip(int idx) {
 	if (idx < 0 || idx > 3)
 		return ;
+	delete this->_materia[idx]; //Fallen
 	this->_materia[idx] = NULL;
 }
 

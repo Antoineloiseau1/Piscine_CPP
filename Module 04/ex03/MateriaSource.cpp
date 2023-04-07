@@ -32,9 +32,10 @@ void	MateriaSource::learnMateria(AMateria *materia) {
 		if (this->_items[i] == NULL)
 		{
 			this->_items[i] = materia;
-			break;
+			return ;
 		}
 	}
+	delete materia; //fallen
 }
 AMateria* MateriaSource::createMateria(std::string const & type) {
 	for(int i = 0; i < 4; i++)
