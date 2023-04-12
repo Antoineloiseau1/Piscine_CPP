@@ -10,6 +10,9 @@ FLAGS	=	-Wall -Werror -Wextra
 
 RM		=	rm -rf
 
+.cpp.o:
+			${CC} ${FLAGS} -c $< -o ${<:.cpp=.o}
+
 all:		${NAME}
 
 ${NAME}:	${OBJS}

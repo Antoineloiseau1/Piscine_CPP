@@ -12,7 +12,7 @@ int	main(int argc, char *argv[])
 	}
 
 	std::ifstream	file;
-	file.open (argv[1], std::ifstream::in);
+	file.open(argv[1], std::ifstream::in);
 	if (!file.is_open())
 	{
 		std::cerr << "Error: " << argv[0] << ": ";

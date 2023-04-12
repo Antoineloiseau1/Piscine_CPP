@@ -19,25 +19,25 @@ class Form {
 	public:
 
 		Form(void);
-		Form(const std::string & name, unsigned int signGrade, unsigned int execGrade);
+		Form(const std::string & name, unsigned int signGrade, unsigned int execGrade) throw(GradeTooHighException, GradeTooLowException);
 		Form(const Form & src);
 		Form&	operator=(const Form & rhs);
 		~Form(void);
 
 		const std::string	getName(void) const;
 		bool				isSigned(void) const;
-		const unsigned int	getSignGrade(void) const;
-		const unsigned int	getExecGrade(void) const;
+		unsigned int	getSignGrade(void) const;
+		unsigned int	getExecGrade(void) const;
 
-		void	beSigned(const Bureaucrat & worker);
+		void	beSigned(const Bureaucrat & worker) throw(GradeTooLowException);
 
 		class GradeTooHighException: public std::exception {
 			public:
-				const char *	what(void) const noexcept override;
+				const char *	what(void) const throw();
 		};
 		class GradeTooLowException: public std::exception {
 			public:
-				const char *	what(void) const noexcept override;
+				const char *	what(void) const throw();
 		};
 };
 
