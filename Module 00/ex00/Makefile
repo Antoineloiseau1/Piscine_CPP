@@ -1,6 +1,6 @@
 NAME	=	megaphone
 
-SCRS	= 	megaphone.cpp
+SRCS	= 	megaphone.cpp
 
 OBJS	=	${SRCS:.cpp=.o}
 
@@ -8,6 +8,8 @@ CC		=	c++
 
 FLAGS	=	-std=c++98 -Wall -Werror -Wextra
 
+.cpp.o:
+			${CC} ${FLAGS} -c $< -o ${<:.cpp=.o}
 
 all:		${NAME}
 

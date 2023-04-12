@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anloisea <anloisea@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/24 11:59:50 by antoine           #+#    #+#             */
-/*   Updated: 2023/02/21 13:52:17 by antoine          ###   ########.fr       */
+/*   Updated: 2023/04/12 14:56:21 by anloisea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ void	PhoneBook::displayContacts(void) const
 		}
 		else
 		{
-			for (int j = 0; j < (10 - (this->_entry[i].getFirstName()).size()); j++)
+			for (unsigned long j = 0; j < (10 - (this->_entry[i].getFirstName()).size()); j++)
 				std::cout << ' ';
 			std::cout << this->_entry[i].getFirstName() << "|";
 		}
@@ -62,7 +62,7 @@ void	PhoneBook::displayContacts(void) const
 		}
 		else
 		{
-			for (int j = 0; j < (10 - (this->_entry[i].getLastName()).size()); j++)
+			for (unsigned long j = 0; j < (10 - (this->_entry[i].getLastName()).size()); j++)
 				std::cout << ' ';
 			std::cout << this->_entry[i].getLastName() << "|";
 		}
@@ -74,7 +74,7 @@ void	PhoneBook::displayContacts(void) const
 		}
 		else
 		{
-			for (int j = 0; j < (10 - (this->_entry[i].getNickName()).size()); j++)
+			for (unsigned long j = 0; j < (10 - (this->_entry[i].getNickName()).size()); j++)
 				std::cout << ' ';
 			std::cout << this->_entry[i].getNickName() << "|" << std::endl;
 		}

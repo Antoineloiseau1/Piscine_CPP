@@ -2,15 +2,15 @@
 #include <iostream>
 
 /* Parametric Constructor */
-Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) : _name(name), _grade(grade) {
-	if (grade < _maxGrade)
+Bureaucrat::Bureaucrat(const std::string name, unsigned int grade) throw(GradeTooHighException, GradeTooLowException) : _name(name), _grade(grade) {
+	if (this->_grade < 1)
 		throw	Bureaucrat::GradeTooHighException();
-	if (grade > _minGrade)
+	if (this->_grade > 150)
 		throw	Bureaucrat::GradeTooLowException();
 }
 
 /* Default Constructor */
-Bureaucrat::Bureaucrat(void) : Bureaucrat("Random Guy", 150) {}
+Bureaucrat::Bureaucrat(void) : _name("Random Guy"), _grade(150) {}
 
 /* Copy Constructor */
 Bureaucrat::Bureaucrat(const Bureaucrat & src) : _name(src.getName() + "_copy"), _grade(src.getGrade()) {}
@@ -34,26 +34,26 @@ unsigned int	Bureaucrat::getGrade(void) const {
 }
 
 /* Upgrades Bureaucrat */
-void	Bureaucrat::upgrade(void) {
-	if (this->_grade - 1 < _maxGrade)
+void	Bureaucrat::upgrade(void) throw(GradeTooHighException) {
+	if (this->_grade - 1 < 1)
 		throw	Bureaucrat::GradeTooHighException();
 	this->_grade--;
 }
 
 /* Downgrade Bureaucrat */
-void	Bureaucrat::downgrade(void) {
-	if (this->_grade + 1 > _minGrade)
+void	Bureaucrat::downgrade(void) throw(GradeTooLowException) {
+	if (this->_grade + 1 > 150)
 		throw	Bureaucrat::GradeTooLowException();
 	this->_grade++;
 }
 
 /* what function of GradeTooHighExecpetion Class */
-const char *	Bureaucrat::GradeTooHighException::what(void) const noexcept{ 
+const char *	Bureaucrat::GradeTooHighException::what(void) const throw() { 
 	return "Error: Grade is to high";
 }
 
 /* what function of GradeTooLowExecpetion Class */
-const char *	Bureaucrat::GradeTooLowException::what(void) const noexcept {
+const char *	Bureaucrat::GradeTooLowException::what(void) const throw() {
 	return "Error: Grade is to low";
 }
 
