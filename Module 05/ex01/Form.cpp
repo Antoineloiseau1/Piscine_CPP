@@ -35,15 +35,11 @@ unsigned int	Form::getExecGrade(void) const {
 }
 
 void	Form::beSigned(const Bureaucrat & worker) throw(GradeTooLowException) {
-	if (this->_signed)
-		return ;
+
+	if (worker.getGrade() <= this->_signGrade)
+		this->_signed = true;
 	else
-	{
-		if (worker.getGrade() <= this->_signGrade)
-			this->_signed = true;
-		else
-			throw (Form::GradeTooLowException());
-	}
+		throw (Form::GradeTooLowException());
 }
 
 const char *	Form::GradeTooHighException::what(void) const throw() {

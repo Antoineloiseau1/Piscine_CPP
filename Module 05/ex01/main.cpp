@@ -37,6 +37,11 @@ int main(void) {
 	{
 		std::cerr << e.what() << std::endl;
 	}
+	
+	std::cout << std::endl << "*** resigning form ***" << std::endl;
+	john.signForm(important);
+	
+	std::cout << std::endl << "*** Downgrading John ***" << std::endl;
 	john.downgrade();
 	std::cout << john << std::endl;
 	try

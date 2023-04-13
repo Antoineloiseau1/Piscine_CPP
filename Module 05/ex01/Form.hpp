@@ -26,10 +26,10 @@ class Form {
 
 		const std::string	getName(void) const;
 		bool				isSigned(void) const;
-		unsigned int	getSignGrade(void) const;
-		unsigned int	getExecGrade(void) const;
+		unsigned int		getSignGrade(void) const;
+		unsigned int		getExecGrade(void) const;
 
-		void	beSigned(const Bureaucrat & worker) throw(GradeTooLowException);
+		void				beSigned(const Bureaucrat & worker) throw(GradeTooLowException);
 
 		class GradeTooHighException: public std::exception {
 			public:
