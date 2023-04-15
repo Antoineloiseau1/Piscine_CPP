@@ -38,8 +38,9 @@ AForm*	Intern::makeForm(std::string type, std::string target) {
 	{
 		if (formTypes[i].name == type) 
 		{
-			std::cout << "Intern creates " << (this->*formTypes[i].funcPtr)(target)->getName() << std::endl;
-			return  (this->*formTypes[i].funcPtr)(target);
+			AForm* form = (this->*formTypes[i].funcPtr)(target);
+			std::cout << "Intern creates " << form->getName() << std::endl;
+			return  form;
 		}
 	}
 	throw (FormTypeNotFoundException());
