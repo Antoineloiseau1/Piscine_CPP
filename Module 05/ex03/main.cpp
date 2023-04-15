@@ -9,11 +9,16 @@
 int main(void) {
 
 	Intern	antoine;
+	Bureaucrat	michou("Michou", 2);
+	std::cout << michou << std::endl << std::endl;
 	std::string	types[] = {"presidential pardon", "robotomy request", "shrubberry creation"};
 	for(int i = 0; i < 3; i++)
 	{
 		AForm*	test = antoine.makeForm(types[i], "bender");
-		std::cout << *test << std::endl << std::endl;
+		std::cout << *test << std::endl; 
+		michou.signForm(*test);
+		michou.executeForm(*test);
+		std::cout << std::endl;
 		delete test;
 	}
 
