@@ -5,7 +5,9 @@
 #include <cstdlib>
 #include <iostream>
 
+
 Base::~Base(void) { return; }
+
 
 Base*	generate(void) {
 	std::srand(std::time(NULL));
@@ -23,6 +25,21 @@ Base*	generate(void) {
 }
 
 void	identify(Base* p) {
-	std::cout << reinterpret_cast<B*>(p) << std::endl;
-	std::cout << reinterpret_cast<unsigned int*>(p) << std::endl;
+	std::cout << "class pointed by p is type: ";
+	if (dynamic_cast<A*>(p))
+		std::cout << "A class" << std::endl;
+	if (dynamic_cast<B*>(p))
+		std::cout << "B class" << std::endl;
+	if (dynamic_cast<C*>(p))
+		std::cout << "C class" << std::endl;
+}
+
+void	identify(Base& p) {
+	std::cout << "class referred by p is type: ";
+	if (dynamic_cast<A*>(&p))
+		std::cout << "A class" << std::endl;
+	if (dynamic_cast<B*>(&p))
+		std::cout << "B class" << std::endl;
+	if (dynamic_cast<C*>(&p))
+		std::cout << "C class" << std::endl;
 }
