@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <iomanip>
 #include <climits>
+#include <string>
 #include <sstream>
 
 ScalarConverter::ScalarConverter(void) { return; }
@@ -10,7 +11,7 @@ ScalarConverter::ScalarConverter(ScalarConverter const & src) { static_cast<void
 ScalarConverter::~ScalarConverter(void) { return; }
 ScalarConverter&	ScalarConverter::operator=(ScalarConverter const & rhs) { static_cast<void>(rhs); return *this; }
 
-bool	isTypeInt(std::string literal) {
+bool	isTypeInt(const std::string& literal) {
 	int	i = 0;
 	if (literal[i] == '+' || literal[i] == '-')
 		i++;
@@ -19,57 +20,49 @@ bool	isTypeInt(std::string literal) {
 	return (!literal[i]);
 }
 
-bool	isTypeFloat(std::string literal) {
+bool	isTypeFloat(const std::string& literal) {
 	int	i = 0;
-	if(literal[i] == '+' || literal[i] == '-')
+	if (literal[i] == '+' || literal[i] == '-')
 		i++;
 	if(!isdigit(literal[i]))
 		return false;
 	while(isdigit(literal[i]))
 		i++;
-	if (literal[i] != '.')
-		return false;
-	else
+	if (literal[i] == '.')
 		i++;
 	if (!isdigit(literal[i]))
 		return false;
 	while(isdigit(literal[i]))
 		i++;
 	return (literal[i] == 'f');
-	
 }
 
-char	ScalarConverter::_detectType(std::string literal) {
+char	ScalarConverter::_detectType(const std::string& literal) {
 	if(isTypeInt(literal))
 		return INT;
-	// if (atoi(literal.c_str()) != 0 || literal == "0")
-	// 	return INT;
-	//char	*endPtr = NULL;
-	// strtof(literal.c_str(), &endPtr);
-	if (isTypeFloat(literal))
+	else if (isTypeFloat(literal))
 		return FLOAT;
-	// strtod(literal.c_str(), &endPtr);
-	// if (*endPtr == 0 || literal == "nan")
-	// 	return DOUBLE;
-	// strtol(literal.c_str(), &endPtr, 10);
-	// if (*endPtr == 0)
-	// 	return INT;
 	if (literal.length() == 1 && isprint(literal[0]))
 		return CHAR;
 	return -1;
 }
 
 void	ScalarConverter::_convertInteger(std::string literal) {
-	std::stringstream ss(literal);
-	int	integer;
-	ss >> integer;
-	if (integer > CHAR_MAX || integer < 0 || !isprint(integer))
-		std::cout << "char: Non displayable" << std::endl;
-	else
-		std::cout << "char: \'" << static_cast<char>(integer) << "\'" << std::endl;
-	std::cout << "int: " << integer << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(integer) << "f" << std::endl;
-	std::cout << "double: " << static_cast<double>(integer) << std::endl;
+	try
+	{
+		int integer = strtol(literal.c_str(), NULL, 2);
+		if (integer > CHAR_MAX || integer < 0 || !isprint(integer))
+			std::cout << "char: Non displayable" << std::endl;
+		else
+			std::cout << "char: \'" << static_cast<char>(integer) << "\'" << std::endl;
+		std::cout << "int: " << integer << std::endl;
+		std::cout << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(integer) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(integer) << std::endl;
+	}
+	catch (std::exception& e)
+	{
+		std::cerr << e.what() << std::endl;
+	}
 }
 
 void	ScalarConverter::_convertChar(std::string literal) {
@@ -91,7 +84,14 @@ void	ScalarConverter::_convertFloat(std::string literal) {
 	std::cout << "double: " << static_cast<double>(floating) << std::endl;
 }
 
-void	ScalarConverter::convert(std::string literal) {
+void	ScalarConverter::_displayError(void) {
+	std::cout << "char: impossible" << std::endl;
+	std::cout << "int: impossible" << std::endl;
+	std::cout << "float: impossible" << std::endl;
+	std::cout << "double: impossible" << std::endl;
+}
+
+void	ScalarConverter::convert(const std::string& literal) {
 	std::cout << "literal: " << literal << std::endl;
 	char	type = _detectType(literal);
 	switch (type) {
@@ -105,6 +105,7 @@ void	ScalarConverter::convert(std::string literal) {
 			_convertFloat(literal);
 			break;
 		default:
+			_displayError();
 			break;
 	}
 }

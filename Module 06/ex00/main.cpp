@@ -3,10 +3,9 @@
 
 int main(int argc, char*argv[]) {
 	if (argc != 2) {
-		std::cout << "usage: ./convert <literal>" << std::endl;
+		std::cerr << "usage: ./convert <literal>" << std::endl;
 		return (1);
 	}
-	std::string literal(argv[1]);
-	ScalarConverter::convert(literal);
+	ScalarConverter::convert(static_cast<std::string>(argv[1]));
 	return (0);
 }

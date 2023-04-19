@@ -7,10 +7,11 @@ class ScalarConverter {
 
 	private:
 
-		static char	_detectType(std::string literal);
+		static char	_detectType(const std::string& literal);
 		static void	_convertInteger(std::string literal);
 		static void	_convertChar(std::string literal);
 		static void	_convertFloat(std::string literal);
+		static void	_displayError(void);
 
 		enum	_type {
 			CHAR,
@@ -24,9 +25,10 @@ class ScalarConverter {
 		ScalarConverter(void);
 		ScalarConverter(ScalarConverter const & src);
 		~ScalarConverter(void);
+
 		ScalarConverter&	operator=(ScalarConverter const & rhs);
 
-		static void	convert(std::string literal);
+		static void			convert(const std::string& literal);
 };
 
 #endif
