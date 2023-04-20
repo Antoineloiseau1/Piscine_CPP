@@ -7,10 +7,14 @@ class ScalarConverter {
 
 	private:
 
+		static bool	_isTypeInt(const std::string& literal);
+		static bool	_isTypeFloat(const std::string& literal);
+		static bool	_isTypeDouble(const std::string& literal);
 		static char	_detectType(const std::string& literal);
-		static void	_convertInteger(std::string literal);
-		static void	_convertChar(std::string literal);
-		static void	_convertFloat(std::string literal);
+		static void	_convertInteger(const std::string& literal);
+		static void	_convertChar(const std::string& literal);
+		static void	_convertFloat(const std::string& literal);	
+		static void	_convertDouble(const std::string& literal);
 		static void	_displayError(void);
 
 		enum	_type {
