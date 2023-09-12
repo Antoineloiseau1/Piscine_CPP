@@ -14,15 +14,15 @@ class Bureaucrat {
 	public:
 
 		Bureaucrat(void);
-		Bureaucrat(const std::string name, unsigned int grade) throw(GradeTooHighException, GradeTooLowException);
+		Bureaucrat(const std::string name, unsigned int grade);
 		Bureaucrat(const Bureaucrat & src);
 		Bureaucrat & operator=(const Bureaucrat & rhs);
 		~Bureaucrat(void);
 
 		const std::string	getName(void) const;
 		unsigned int		getGrade(void) const;
-		void				upgrade(void) throw(GradeTooHighException);
-		void				downgrade(void) throw(GradeTooLowException);
+		void				upgrade(void);
+		void				downgrade(void);
 	
 		class	GradeTooHighException: public std::exception {
 			public:
