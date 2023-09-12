@@ -13,27 +13,15 @@ int main(void) {
 	std::cout << michel << std::endl << std::endl;
 
 	std::cout << "*** Form Not Signed Test ***" << std::endl;
-	try
-	{
-		test.execute(michel);
-	}
-	catch (std::exception & e)
-	{
-		std::cerr << e.what() << std::endl << std::endl;
-	}
+	michel.executeForm(test);
 	michel.signForm(test);
+	std::cout << test << std::endl;
 
 	std::cout << std::endl << "*** GradeTooLow to be executed ***" << std::endl;
-	try
-	{
-		michel.executeForm(test);
-	}
-	catch(std::exception & e)
-	{
-		std::cerr << e.what() << std::endl << std::endl;
- 	}
+	michel.executeForm(test);
 	michel.upgrade();
 	std::cout << michel << std::endl << std::endl;
+
 	std::cout << "*** Executing ShrubberryCreationForm ***" << std::endl;
 	michel.executeForm(test);
 
@@ -47,7 +35,7 @@ int main(void) {
 	std::cout << std::endl;
 	jacquie.executeForm(robotomy);
 
-	PresidentialPardonForm	pardon("merci");
+	PresidentialPardonForm	pardon("Tom");
 	std::cout << std::endl << pardon << std::endl << std::endl;
 	Bureaucrat hank("Hank", 2);
 	std::cout << hank << std::endl;

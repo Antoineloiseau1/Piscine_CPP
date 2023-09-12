@@ -18,9 +18,7 @@ class ShrubberryCreationForm: public AForm {
 		~ShrubberryCreationForm(void);
 
 		std::string const	getTarget(void) const;
-		void				execute(const Bureaucrat & executor) const;
-};	
-
-void drawShrubberries(std::ofstream& file);
+		void				execute(Bureaucrat const & executor) const;
+};
 
 #endif

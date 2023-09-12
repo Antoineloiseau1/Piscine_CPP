@@ -1,6 +1,7 @@
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
 #include <ctime>
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45), _target(target) {}
 
@@ -23,6 +24,5 @@ void	RobotomyRequestForm::execute(const Bureaucrat & executor) const {
 	else
 		std::cout << "Shoot... robotomy operation has failed" << std::endl;
 }
-
 
 RobotomyRequestForm::~RobotomyRequestForm(void) {}
