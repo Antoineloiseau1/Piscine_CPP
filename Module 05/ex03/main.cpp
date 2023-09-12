@@ -11,26 +11,22 @@ int main(void) {
 	Intern	antoine;
 	Bureaucrat	michou("Michou", 2);
 	std::cout << michou << std::endl << std::endl;
-	std::string	types[] = {"presidential pardon", "robotomy request", "shrubberry creation"};
-	for(int i = 0; i < 3; i++)
+	std::string	types[] = {"presidential pardon", "robotomy request", "shrubberry creation", "toto"};
+	for(int i = 0; i < 4; i++)
 	{
-		AForm*	test = antoine.makeForm(types[i], "bender");
-		std::cout << *test << std::endl; 
-		michou.signForm(*test);
-		michou.executeForm(*test);
-		std::cout << std::endl;
-		delete test;
-	}
-
-	std::cout << "*** Wrong Type Form Test ***" << std::endl;
-	try
-	{
-		AForm*	test = antoine.makeForm("toto", "tata");
-		(void)test;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
+		try
+		{
+			AForm*	test = antoine.makeForm(types[i], "bender");
+			std::cout << *test << std::endl; 
+			michou.signForm(*test);
+			michou.executeForm(*test);
+			std::cout << std::endl;
+			delete test;
+		}
+		catch(const std::exception &e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 	return (0);
 }

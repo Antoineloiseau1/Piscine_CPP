@@ -13,7 +13,7 @@ Intern::~Intern(void) {}
 
 /* Error Exception */
 const char*	Intern::FormTypeNotFoundException::what(void) const throw() {
-	return "Error: Type of Form not found";
+	return "Intern::FormTypeNotFoundException: Type of Form not found";
 }
 
 
