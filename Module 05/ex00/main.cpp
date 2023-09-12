@@ -3,6 +3,9 @@
 
 int main(void) {
 
+	Bureaucrat	average;
+	std::cout << average << std::endl << std::endl;
+
 	/* TOO HIGH */
 	std::cout << "/* TRYING TO INSTANCIATE GRADE 0 */\n";
 	try

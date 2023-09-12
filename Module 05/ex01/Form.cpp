@@ -1,61 +1,52 @@
 #include "Form.hpp"
 #include <iostream>
 
-Form::Form(void) : _name("Blank"), _signed(false), _signGrade(150),_execGrade(150) {} 
+/* Default Constructor */
+Form::Form(void) : _name("Blank"), _isSigned(false), _signGrade(150),_execGrade(150) {} 
 
-Form::Form(const std::string & name, unsigned int signGrade, unsigned int execGrade) throw(GradeTooHighException, GradeTooLowException) : _name(name), _signed(false), _signGrade(signGrade), _execGrade(execGrade) {
+/* Parametric Constructor */
+Form::Form(const std::string name, unsigned int signGrade, unsigned int execGrade) : _name(name), _isSigned(false), _signGrade(signGrade), _execGrade(execGrade) {
 	if (signGrade < 1 || execGrade < 1)
 		throw Form::GradeTooHighException();
 	if (signGrade > 150 || execGrade > 150)
-		throw Form::GradeTooHighException();
+		throw Form::GradeTooLowException();
 }
 
-Form::Form(const Form & src) : _name(src.getName()), _signed(src.isSigned()), _signGrade(src.getSignGrade()), _execGrade(src.getExecGrade()) {}
+/* Copy Constructor */
+Form::Form(const Form & src) : _name(src.getName()), _isSigned(src.isSigned()), _signGrade(src.getSignGrade()), _execGrade(src.getExecGrade()) {}
 
+/* Assignment Operator Constructor */
 Form&	Form::operator=(const Form & rhs) {
 	if (this != &rhs)
-		this->_signed = rhs.isSigned();
+		this->_isSigned = rhs.isSigned();
 	return *this;
 }
 
-const std::string Form::getName(void) const {
-	return this->_name;
-}
+/* Getters */
+unsigned int		Form::getSignGrade(void) const { return this->_signGrade; }
+unsigned int		Form::getExecGrade(void) const { return this->_execGrade; }
+const std::string	Form::getName(void) const { return this->_name; }
+bool				Form::isSigned(void) const { return this->_isSigned; }
 
-bool	Form::isSigned(void) const {
-	return this->_signed;
-}
 
-unsigned int	Form::getSignGrade(void) const {
-	return this->_signGrade;
-}
+void	Form::beSigned(Bureaucrat & bureaucrat) {
 
-unsigned int	Form::getExecGrade(void) const {
-	return this->_execGrade;
-}
-
-void	Form::beSigned(const Bureaucrat & worker) throw(GradeTooLowException) {
-
-	if (worker.getGrade() <= this->_signGrade)
-		this->_signed = true;
+	if (bureaucrat.getGrade() <= this->_signGrade)
+		this->_isSigned = true;
 	else
 		throw (Form::GradeTooLowException());
 }
 
-const char *	Form::GradeTooHighException::what(void) const throw() {
-	return "Error: Grade too high";
-}
-
-const char *	Form::GradeTooLowException::what(void) const throw() {
-	return "Error: Grade too low";
-}
+/* what functions of exception classes */
+const char *	Form::GradeTooHighException::what(void) const throw() { return "Form::GradeTooHighException: Grade can't exceed 1";}
+const char *	Form::GradeTooLowException::what(void) const throw() { return "Form::GradeTooLowException: Grade too low";}
 
 Form::~Form(void) {}
 
 std::ostream&	operator<<(std::ostream& out, Form const & instance) {
-	out << "\""<< instance.getName() << "\" form has grade " << instance.getSignGrade();
-	out << " to be signed and grade " << instance.getExecGrade() << " to be executed." << std::endl;
-	out << "This form has " << ((instance.isSigned()) ? "been signed." : "not been signed yet.");
+	out <<  instance.getName() << " has grade " << instance.getSignGrade();
+	out << " to be signed and grade " << instance.getExecGrade() << " to be executed, ";
+	out << "this form has " << ((instance.isSigned()) ? "been signed" : "not been signed yet");
 	return out;
 }
 
