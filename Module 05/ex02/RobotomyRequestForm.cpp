@@ -18,9 +18,9 @@ void	RobotomyRequestForm::execute(const Bureaucrat & executor) const {
 	this->checkPrerequisites(executor);
 	std::srand(std::time(0));
 	int	randomNum = std::rand() % 2;
-	if (randomNum == 1) {
-		std::cout << "Whirrrrrr... Whirrrrrr... Whirrrrrr... " << this->_target << " has been robotomised" << std::endl;
-	}
+	std::cout << "Whirrrrrr... Whirrrrrr... Whirrrrrr..............\n";
+	if (randomNum == 1)
+		 std::cout << this->_target << " has been robotomised" << std::endl;
 	else
 		std::cout << "Shoot... robotomy operation has failed" << std::endl;
 }
