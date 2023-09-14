@@ -8,6 +8,7 @@ int main(void) {
 	unsigned int*	ptr = Serializer::serialize(&d);
 	std::cout << "return value of serialize: " << ptr << std::endl;
 
+	std::cout << "Deserializing...\n";
 	Data* dptr = Serializer::deserialize(ptr);
 	std::cout << "return value of deserialize: "<< *dptr << std::endl << "with adress: " << dptr << std::endl;
 	
