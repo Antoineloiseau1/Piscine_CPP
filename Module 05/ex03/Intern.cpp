@@ -35,9 +35,9 @@ AForm*	Intern::makeForm(std::string type, std::string target) {
 		{"shrubberry creation", &Intern::_createShrubberryCreationForm},
 		{"presidential pardon", &Intern::_createPresidentialPardonForm}};
 	
-	for(int i = 0; i < 3; i++) 
+	for(int i = 0; i < 3; i++)
 	{
-		if (formTypes[i].name == type) 
+		if (formTypes[i].name == type)
 		{
 			AForm* form = (this->*formTypes[i].funcPtr)(target);
 			std::cout << "Intern creates " << form->getName() << std::endl;
