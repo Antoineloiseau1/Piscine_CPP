@@ -3,18 +3,20 @@
 
 #include <iostream>
 
-template<typename T>
+template<typename T = int>
 class A {
 	private:
 
 		T	_data;
 
 	public:
+
 		A(T data) : _data(data) {}
 		A(void) {}
 		~A() {}
 
 		T	getData(void) const {return _data;}
+
 		A	operator++(T) {
 			A temp(*this);
 			++_data;
