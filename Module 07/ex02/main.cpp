@@ -1,10 +1,26 @@
 #include <iostream>
-#include "Array.tpp"
+#include "Array.hpp"
 #include <stdlib.h>
 
 #define MAX_VAL 750
 int main(int, char**)
 {
+
+	std::cout << "Test on empty array:\n";
+	Array<float>	empty;
+	std::cout << "empty.size(): " << empty.size() << std::endl;
+	std::cout << "Tyring to access on first element of empty......\n";
+	try
+	{
+		std::cout << "empty[0]: " << empty[0] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << "\n\n";
+	}
+	
+
+
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
     srand(time(NULL));
@@ -83,5 +99,14 @@ int main(int, char**)
 		if(i != 2)
 			std::cout << std::endl;
 	}
+	try
+	{
+		std::cout << array[3] << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+	}
+	
     return 0;
 }
