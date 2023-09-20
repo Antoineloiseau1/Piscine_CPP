@@ -1,5 +1,5 @@
 #include <iostream>
-#include "Array.hpp"
+#include "Array.tpp"
 #include <stdlib.h>
 
 #define MAX_VAL 750
@@ -18,6 +18,11 @@ int main(int, char**)
 	{
 		std::cerr << e.what() << "\n\n";
 	}
+	std::cout << "Test on a initialized by default array\n";
+	Array<int>	zero(MAX_VAL);
+	for(size_t i = 0; i < zero.size(); i++)
+		std::cout << zero[i];
+	std::cout << std::endl;
 	
 
 
@@ -32,7 +37,7 @@ int main(int, char**)
     }
 	//SCOPE
     {
-		std::cout << "Assigning tmp to numbers: (tmp = numbers)\n";
+		std::cout << "\nAssigning tmp to numbers: (tmp = numbers)\n";
         Array<int> tmp = numbers;
 		std::cout << "Calling copy constuctor on tmp: (Array<int> test(tmp))\n";
         Array<int> test(tmp);
@@ -91,22 +96,24 @@ int main(int, char**)
 	array[2] = "tonton";
 	Array<std::string> test = array;
 	Array<std::string> tmp(test);
-	for(int i = 0; i < 3; i++)
+	std::cout << "&array: " << &array << std::endl;
+	std::cout << "&test: " << &test << std::endl;
+	std::cout << "&tmp: " << &tmp << std::endl << std::endl;
+	for(size_t i = 0; i < array.size(); i++)
 	{
-		std::cout << "array[" << i << "]: \t" << array[i] << "\taddress: " << &array + i << std::endl;
-		std::cout << "test[" << i << "]: \t" << test[i] << "\taddress: " << &test + i << std::endl;
-		std::cout << "tmp[" << i << "]: \t" << tmp[i] << "\taddress: " << &tmp + i << std::endl;
-		if(i != 2)
-			std::cout << std::endl;
+		try
+		{
+			std::cout << "array[" << i << "]: \t" << array[i] << std::endl;
+			std::cout << "test[" << i << "]: \t" << test[i] << std::endl;
+			std::cout << "tmp[" << i << "]: \t" << tmp[i]  << std::endl;
+			if(i != array.size() - 1)
+				std::cout << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+			return(1);
+		}
 	}
-	try
-	{
-		std::cout << array[3] << std::endl;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
     return 0;
 }
