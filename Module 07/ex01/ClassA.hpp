@@ -3,31 +3,27 @@
 
 #include <iostream>
 
-template<typename T = int>
 class A {
 	private:
 
-		T	_data;
+		int	_n;
 
 	public:
 
-		A(T data) : _data(data) {}
-		A(void) {}
-		~A() {}
+		A(int n) : _n(n) {}
 
-		T	getData(void) const {return _data;}
+		int	get(void) const {return _n;}
 
-		A	operator++(T) {
+		A	operator++(int) {
 			A temp(*this);
-			++_data;
+			++_n;
 			return temp;
 		}
 };
 
-template<typename T>
-std::ostream &	operator<<(std::ostream &out, A<T> const & instance)
+std::ostream &	operator<<(std::ostream &out, A const & instance)
 {
-	out << instance.getData();
+	out << instance.get();
 	return out;
 }
 
