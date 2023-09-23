@@ -1,13 +1,17 @@
 #include "Span.hpp"
-#include<vector>
-#include<iostream>
-#include<stdlib.h>
+#include <vector>
+#include <iostream>
+#include <cstdlib>
+#include <time.h>
 
-#define MAX_VALUE 10000
+#define MAX_VALUE 10
 
 int main(void)
 {
-	//42 TESTS
+
+	srand(time(0));
+
+	// 42 TESTS
 	{
 		std::cout << "42 TEST:\n";
 		Span sp = Span(5);
@@ -22,9 +26,9 @@ int main(void)
 		std::cout << sp.longestSpan() << std::endl;
 	}
 
-	//My tests;
+	// My tests;
 	{
-		std::cout << "\nMy Tests\n";
+		std::cout << "\nMy Tests:\n";
 		Span	span(MAX_VALUE);
 		try
 		{
@@ -40,23 +44,51 @@ int main(void)
 			std::cerr << e.what() << '\n';
 		}
 	}
+
+	//Test on insertion
 	{
-		std::cout << "\ntest on insertion\n";
-		Span				numbers(41);
+		std::cout << "\nTest on insertion:\n";
+		Span				numbers(MAX_VALUE);
 		std::vector<int>	v;
 
-		for(int i = 0; i < 10; i++)
-			v.push_back(rand() % 1000);
-		for(std::vector<int>::iterator it = v.begin(); it != v.end(); it++)
-			std::cout << *it << ", ";
-		std::cout << std::endl;
+		for(int i = 0; i < MAX_VALUE; i++)
+			v.push_back(rand());
 		try
 		{
-			std::cout << numbers << std::endl;
-			// numbers.addSetOfNumbers(v.begin(), v.end());
-			numbers.addSetOfNumbers(v.begin() + 8, v.end());
-			std::cout << *(numbers.getSet().begin() + 1) << std::endl;
-			std::cout << numbers << std::endl;
+			numbers.addSetOfNumbers(v.begin(), v.end());
+			std::cout << numbers.shortestSpan() << std::endl;
+			std::cout << numbers.longestSpan() << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << '\n';
+		}
+	}
+
+	// Tests on constructors
+	{
+		std::cout << "\nTest on contructors\n";
+		Span	s(MAX_VALUE);
+		std::vector<int>	v;
+		for(int i = 0; i < MAX_VALUE; i++)
+		{
+			v.push_back(rand());
+		}
+		try
+		{
+			s.addSetOfNumbers(v.begin(), v.end());
+			Span	s2(s);
+			Span	s3 = s2;
+
+			std::cout << "s" << s << std::endl;
+			std::cout << "s2" << s2 << std::endl;
+			std::cout << "s3" << s3 << std::endl << std::endl;
+			std::cout << "s1 Shortest Span: " << s.shortestSpan() << std::endl;
+			std::cout << "s2 Shortest Span: " << s2.shortestSpan() << std::endl; 
+			std::cout << "s3 Shortest Span: " << s3.shortestSpan() << std::endl << std::endl;
+			std::cout << "s1 Longuest Span: " << s.longestSpan() << std::endl;
+			std::cout << "s2 Longuest Span: " << s2.longestSpan() << std::endl; 
+			std::cout << "s3 Longuest Span: " << s3.longestSpan() << std::endl; 
 		}
 		catch(const std::exception& e)
 		{
