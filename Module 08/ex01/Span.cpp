@@ -57,13 +57,14 @@ void	Span::addSetOfNumbers(std::vector<int>::iterator first, std::vector<int>::i
 int	Span::shortestSpan(void) 
 {	
 	int	shortestSpan = INT_MAX;
+	std::vector<int>	tmp(_data);
 
 	if(_data.size() <= 1 ) 
 	{
 		throw NotEnoughElementException();
 	}
-	std::stable_sort(_data.begin(), _data.end());
-	for(std::vector<int>::iterator it = _data.begin(); it != _data.end() - 1; it++) 
+	std::stable_sort(tmp.begin(), tmp.end());
+	for(std::vector<int>::iterator it = tmp.begin(); it != tmp.end() - 1; it++) 
 	{
 		if (*(it + 1) - *it <= shortestSpan)
 		{
