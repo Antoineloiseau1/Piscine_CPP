@@ -31,7 +31,7 @@ class MutantStack {
 		T		top(void)						const	{ return _stack.top(); }
 		void	push(T element)							{ _stack.push(element); }
 		void	pop(void)								{ _stack.pop(); }
-		void	swap(const MutantStack & stack)			{ std::swap(_stack, stack); }
+		void	swap(const MutantStack & stack)			{ _stack.swap(stack); }
 	
 		// Creating an iterator to MutantStack class:
 		class iterator : std::iterator<std::input_iterator_tag, T>
@@ -83,27 +83,22 @@ class MutantStack {
 
 		iterator	end(void)	{
 
-			// std::stack<T>	tmp;
-			// // int					value;
-			// // std::vector<T>		vector;
-			// MutantStack::iterator	it;
+			std::stack<int>	tmp;
+			// int					value;
+			// std::vector<T>		vector;
+			MutantStack::iterator	it;
 
-			// std::swap(tmp, _stack);
+			std::swap(tmp, _stack);
 			// it = &_stack.top();
-			// std::swap(tmp, _stack);
-			// // // while(!tmp.empty())
-			// // {
-			// // 	value = tmp.top();
+			// this->swap(tmp);
+			// // while(!tmp.empty())
+			// {
+			// 	value = tmp.top();
 
 
-			// // }
-			size_t	size = _stack.size();
-			for(size_t i = 0; i < size -; i++)
-			{
-				_stack.pop();
-			}
+			// }
 			
-			return	iterator(&_stack.top());
+			return	iterator(it);
 		}
 
 };
