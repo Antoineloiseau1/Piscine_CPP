@@ -2,7 +2,6 @@
 # define MUTANTSTACK_HPP
 
 # include <stack>
-# include <deque>
 
 template <typename T, class Container = std::deque<T> >
 class MutantStack: public std::stack<T, Container> 
