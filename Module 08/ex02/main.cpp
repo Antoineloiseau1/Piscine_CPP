@@ -7,64 +7,57 @@
 
 int main(void)
 {
-	MutantStack<int>	mstack;
-	mstack.push(5);
-	mstack.push(17);
-	std::cout << "top: " << mstack.top() << std::endl;
-	mstack.pop();
-	std::cout << "size: " << mstack.size() << std::endl;
-	mstack.push(3);
-	mstack.push(5);
-	mstack.push(737);
-	mstack.push(42);
-	MutantStack<int>::iterator it = mstack.begin();
-	MutantStack<int>::iterator ite = mstack.end();
-	it++;
-	--it;
+	MutantStack<int> ms;
+
+	std::cout << "Is MutantStack empty ?: " << std::boolalpha << ms.empty() << std::endl;
+
+	std::cout << "\n>>>>>>> Pushing 42 <<<<<<<\n";
+	ms.push(42);
+
+	std::cout << "Is MutantStack empty ?: " << std::boolalpha << ms.empty() << std::endl;
+	std::cout << "MutantSize: " << ms.size() << std::endl;
+
+	std::cout << "\n>>>>>>>> Poping out 42 <<<<<<<<\n";
+	ms.pop();
+	std::cout << "MutantSize: " << ms.size() << std::endl;
+
+	std::cout << "\n>>>>>>>>> Pushing numbers <<<<<<<<\n";
+	std::list<int>	l;
+	for(size_t i = 0; i < MAX_VALUE; i++)
+	{
+		int value = rand() % MAX_VALUE;
+		ms.push(value);
+		l.push_back(value);
+	}
+
+	std::cout << "\n>>>>>>>>> Display stack using iterators <<<<<<<<\n";
+	MutantStack<int>::iterator it = ms.begin();
+	MutantStack<int>::iterator ite = ms.end();
+	std::cout << "{";
 	while (it != ite)
 	{
-		std::cout << *it << std::endl;
-		++it;
+		std::cout << *it;
+		if (it != ite -1)
+			std::cout << ", ";
+		it++;
 	}
-	std::stack<int> s(mstack);
+	std::cout << "}\n";
+
+	std::cout << "\n>>>>>>>>> comparing with a list <<<<<<<<\n";
+	std::list<int>::iterator i = l.begin();
+	std::list<int>::iterator ie = l.end();
+	size_t x = 0;
+	std::cout << "{";
+	while (i != ie)
+	{
+		std::cout << *i;
+		if(x != l.size() - 1)
+			std::cout << ", ";
+		x++;
+		i++;
+	}
+	std::cout << "}\n";
+
+	std::stack<int> s(ms);
 	return 0;
 }
-
-// int main(void)
-// {
-// 	MutantStack<int> ms;
-
-// 	std::cout << "Is MutantStack empy ?: " << std::boolalpha << ms.empty() << std::endl;
-
-// 	std::cout << ">>>>>>> Pushing 42 <<<<<<<\n";
-// 	ms.push(42);
-
-// 	std::cout << "Is MutantStack empty ?: " << std::boolalpha << ms.empty() << std::endl;
-// 	std::cout << "MutantSize: " << ms.size() << std::endl;
-
-// 	std::cout << ">>>>>>>> Poping out 42 <<<<<<<<\n";
-// 	ms.pop();
-// 	std::cout << "MutantSize: " << ms.size() << std::endl;
-
-// 	std::cout << "\n>>>>>>>>> Pushing numbers <<<<<<<<\n";
-// 	for(size_t i = 10; i > 0; i--)
-// 	{
-// 		ms.push(i);
-// 	}
-
-// 	std::cout << "MutantStack's top(): " << ms.top() << std::endl;
-// 	std::cout << "Using iterator on begin(): " << *ms.begin() << std::endl; 
-
-// 	MutantStack<int>::iterator it;
-// 	it = ms.begin();
-
-// 	std::cout << "\n>>>>>>>>> Display stack using iterators <<<<<<<<\n";
-// 	MutantStack<int>::iterator ite = ms.end();
-// 	while (it != ite)
-// 	{
-// 		std::cout << *it << std::endl;
-// 		it++;
-// 	}
-	
-// 	return 0;
-// }
