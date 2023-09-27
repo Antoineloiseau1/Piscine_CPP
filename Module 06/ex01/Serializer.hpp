@@ -2,19 +2,21 @@
 # define SERIALIZER_HPP
 
 # include "Data.hpp"
+# include <stdint.h>
 
 class Serializer {
 
-	public:
+	private:
 
 		Serializer(void);
 		Serializer(Serializer const & src);
-		~Serializer(void);
 		Serializer&	 			operator=(Serializer const & rhs);
 
-		
-		static unsigned int*	serialize(Data* ptr);
-		static Data*			deserialize(unsigned int* raw);
+	public:
+
+		~Serializer(void);
+		static uintptr_t	serialize(Data* ptr);
+		static Data *		deserialize(uintptr_t raw);
 
 };
 

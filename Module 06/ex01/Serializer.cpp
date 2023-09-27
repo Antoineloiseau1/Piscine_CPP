@@ -7,5 +7,5 @@ Serializer&	Serializer::operator=(Serializer const & rhs) { static_cast<void>(rh
 Serializer::~Serializer(void) { return; }
 
 
-unsigned int*	Serializer::serialize(Data* ptr) { return reinterpret_cast<unsigned int*>(ptr); }
-Data*		Serializer::deserialize(unsigned int* raw) { return reinterpret_cast<Data*>(raw); }
+uintptr_t	Serializer::serialize(Data* ptr) { return reinterpret_cast<uintptr_t>(ptr); }
+Data*		Serializer::deserialize(uintptr_t raw) { return reinterpret_cast<Data*>(raw); }

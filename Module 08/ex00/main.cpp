@@ -18,7 +18,7 @@ int main(void)
 			v.push_back(rand() % MAX_VALUE);
 		try
 		{
-			std::cout << "found value: " << *easyfind(v, rand() % MAX_VALUE) << " in vector" << std::endl;
+			std::cout << "found value " << *easyfind(v, rand() % MAX_VALUE) << " in vector" << std::endl;
 		}
 		catch(const std::exception& e)
 		{
@@ -35,7 +35,7 @@ int main(void)
 			d.push_back(rand() % MAX_VALUE);
 		try
 		{
-			std::cout << "found value: " << *easyfind(d, rand() % MAX_VALUE)<< " in deque" << std::endl;
+			std::cout << "found value " << *easyfind(d, rand() % MAX_VALUE)<< " in deque" << std::endl;
 		}
 		catch(const std::exception& e)
 		{
@@ -52,7 +52,7 @@ int main(void)
 			l.push_back(rand() % MAX_VALUE);
 		try
 		{
-			std::cout << "found value: " << *easyfind(l, rand() % MAX_VALUE) << " in list" << std::endl;
+			std::cout << "found value " << *easyfind(l, rand() % MAX_VALUE) << " in list" << std::endl;
 		}
 		catch(const std::exception& e)
 		{
