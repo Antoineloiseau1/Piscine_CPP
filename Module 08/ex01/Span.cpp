@@ -9,10 +9,10 @@ Span::Span(Span const & src)
 {
 	_data.clear();
 	_maxSize = src.getMaxSize();
-	// for(std::vector<int>::iterator	it = src.getData().begin(); it != src.getData().end(); it++)
-	// {
-	// 	_data.push_back(*it);
-	// }
+	for(std::vector<int>::iterator	it = src.getData().begin(); it != src.getData().end(); it++)
+	{
+		_data.push_back(*it);
+	}
 	_data = src.getData();
 }
 Span &	Span::operator=(Span const & rhs)
@@ -21,10 +21,10 @@ Span &	Span::operator=(Span const & rhs)
 	{
 		_maxSize = rhs.getMaxSize();
 		_data.erase(_data.begin(), _data.end());
-		// for(std::vector<int>::iterator	it = rhs.getData().begin(); it != rhs.getData().end(); it++)
-		// {
-		// 	_data.push_back(*it);
-		// }
+	 	for(std::vector<int>::iterator	it = rhs.getData().begin(); it != rhs.getData().end(); it++)
+		{
+			_data.push_back(*it);
+		}
 		_data = rhs.getData();
 	}
 	return *this;

@@ -10,7 +10,7 @@ class Serializer {
 
 		Serializer(void);
 		Serializer(Serializer const & src);
-		Serializer&	 			operator=(Serializer const & rhs);
+		Serializer&			operator=(Serializer const & rhs);
 
 	public:
 
