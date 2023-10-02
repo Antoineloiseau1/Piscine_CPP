@@ -6,7 +6,7 @@
 /*   By: antoine <antoine@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 15:25:07 by antoine           #+#    #+#             */
-/*   Updated: 2023/02/15 13:36:27 by antoine          ###   ########.fr       */
+/*   Updated: 2023/09/30 10:18:05 by antoine          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char *argv[])
 {
 	if (argc == 1)
 		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
-	
+	 
 	int 	i = 1;
 	int		j;
 	char	c;
