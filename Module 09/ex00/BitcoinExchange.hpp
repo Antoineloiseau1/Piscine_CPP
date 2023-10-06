@@ -3,17 +3,29 @@
 
 # include <fstream>
 # include <iostream>
+# include <algorithm>
 # include <map>
 # include <sstream>
 # include <time.h>
 
 
-time_t	str_to_time(std::string str)
+time_t	str_to_time(std::string str);
+bool	check_value(float value);
+bool	check_data(std::string date);
+
+template<typename T, typename U, typename V>
+std::multimap<T, U>	convert_map_typekey(std::multimap<V, U> & src, T(*f)(V))
 {
-	struct tm	tm;
-	strptime(str.c_str(), "%Y-%m-%d", &tm);
-	return mktime(&tm);
+	std::multimap<T, U>						result;
+	typename std::multimap<V, U>::iterator	it;
+
+	for(it = src.begin(); it != src.end(); it++)
+	{
+		result.insert(std::pair<T, U>(f(it->first), it->second));
+	}
+	return result;
 }
+
 
 template<typename T, typename U>
 std::multimap<T, U>	fill_map_from_file(std::ifstream & file, char separator)
@@ -33,6 +45,16 @@ std::multimap<T, U>	fill_map_from_file(std::ifstream & file, char separator)
 		data.insert(std::pair<T, U>(key, value));
 	}
 	return data;
+}
+
+template<typename T>
+void	displayMap(T & data)
+{
+	typename	T::iterator it;
+	for (it = data.begin(); it != data.end(); it++)
+	{
+		std::cout << "[" << it->first << "] = " << it->second << std::endl;
+	}
 }
 
 #endif
