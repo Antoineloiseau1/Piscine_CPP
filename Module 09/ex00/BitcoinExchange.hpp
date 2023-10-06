@@ -11,7 +11,7 @@
 
 time_t	str_to_time(std::string str);
 bool	check_value(float value);
-bool	check_data(std::string date);
+bool	check_date(std::string date);
 
 template<typename T, typename U, typename V>
 std::multimap<T, U>	convert_map_typekey(std::multimap<V, U> & src, T(*f)(V))

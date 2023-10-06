@@ -30,9 +30,15 @@ int main(int argc, char *argv[])
 	std::multimap<std::string, float>::iterator	it;	
 	for (it = input.begin(); it != input.end(); it++)
 	{
-		if(check_data(it->first))
-		{
-			std::multimap<time_t, float>::iterator needle = data.lower_bound(str_to_time(it->first));
+		if(check_date(it->first))
+		{	
+			std::multimap<time_t, float>::iterator needle = data.find(str_to_time(it->first));
+			if(needle == data.end())
+			{
+				needle = data.lower_bound(str_to_time(it->first));
+				if(needle != data.begin())
+					needle--;
+			}
 			if (check_value(it->second))
 			{
 				std::cout << it->first << "=> " << it->second << " = ";

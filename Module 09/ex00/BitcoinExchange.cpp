@@ -14,7 +14,7 @@ time_t	str_to_time(std::string str)
 
 bool check_value(float value)
 {
-	if (value < 0)
+	if (value <= 0)
 	{
 		std::cout << "Error: not a positive number\n";
 		return false;
@@ -31,7 +31,7 @@ bool check_value(float value)
 }
 
 
-bool check_data(std::string date)
+bool check_date(std::string date)
 {
 	int			value[3];
 	std::string	token;
@@ -49,6 +49,8 @@ bool check_data(std::string date)
 	if (!(value[1] >= 1 && value[1] <= 12))
 		error = true;
 	if (!(value[2] >= 1 && value[2] <= 31))
+		error = true;
+	if(std::getline(iss, token, '-'))
 		error = true;
 	if(error)
 		std::cout << "Error: bad input => " << date << std::endl;
