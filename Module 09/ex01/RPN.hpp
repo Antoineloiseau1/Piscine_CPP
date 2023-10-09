@@ -7,15 +7,12 @@
 enum TOKEN {
 	OTHER = 0,
 	OPERATOR = 1,
-	DIGIT = 2
+	OPERAND = 2
 };
 
 void	RPN(const char *expression);
 int		parse_token(std::string token);
 bool	isoperator(char c);
-void	add(std::stack<int> & s);
-void	substract(std::stack<int> & s);
-void	multiply(std::stack<int> & s);
-void	divide(std::stack<int> & s);
+void	compute_expression(std::stack<int> & s, std::string & token);
 
 #endif
