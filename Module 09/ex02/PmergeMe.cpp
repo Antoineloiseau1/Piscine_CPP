@@ -2,13 +2,12 @@
 #include <iostream>
 #include <deque>
 
-
-
 void PmergeMe(char **argv)
 {
 	std::vector<std::string>	args = extractArgs(argv);
 	std::vector<int>			v;
 	std::deque<int>				d;
+	double						time_stamp;
 
 	if (check_errors(args))
 	{
@@ -16,8 +15,15 @@ void PmergeMe(char **argv)
 	}
 	v = extractNumbers<std::vector<int> >(args);
 	d = extractNumbers<std::deque<int> >(args);
-	(void)v;
-	(void)d;
+	std::cout << "Before:\t";
+	print_container(d);
+	std::cout << "After:\t";
+	time_stamp = ford_johnson_algorithm(d);
+	print_container(d);
+	std::cout << "Time to process a range of\t" << d.size();
+	std::cout << " elements with std::deque: " << time_stamp << " µs" << std::endl;
+	std::cout << "Time to process a range of\t" << v.size();
+	std::cout << " elements with std::deque: " << ford_johnson_algorithm(v) << " µs" << std::endl;
 }
 
 std::vector<std::string>	extractArgs(char **argv)
@@ -54,5 +60,4 @@ bool	check_errors(std::vector<std::string> & args)
 	}
 	return false;
 }
-
 
