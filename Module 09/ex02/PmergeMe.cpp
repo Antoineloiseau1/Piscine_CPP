@@ -1,13 +1,15 @@
 #include "PmergeMe.hpp"
 #include <iostream>
 #include <deque>
+#include <iomanip>
+
 
 void PmergeMe(char **argv)
 {
 	std::vector<std::string>	args = extractArgs(argv);
 	std::vector<int>			v;
 	std::deque<int>				d;
-	double						time_stamp;
+	float						time_stamp;
 
 	if (check_errors(args))
 	{
@@ -23,7 +25,7 @@ void PmergeMe(char **argv)
 	std::cout << "Time to process a range of\t" << d.size();
 	std::cout << " elements with std::deque: " << time_stamp << " µs" << std::endl;
 	std::cout << "Time to process a range of\t" << v.size();
-	std::cout << " elements with std::deque: " << ford_johnson_algorithm(v) << " µs" << std::endl;
+	std::cout << " elements with std::vector: " << ford_johnson_algorithm(v) << " µs" << std::endl;
 }
 
 std::vector<std::string>	extractArgs(char **argv)

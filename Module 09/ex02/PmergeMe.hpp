@@ -95,8 +95,7 @@ template<typename T>
 double	ford_johnson_algorithm(T & container)
 {
 	typename T::iterator	mid = container.begin();
-	clock_t	start;
-	clock_t	end;
+	clock_t	time;
 
 	for(size_t i = 0; i < (container.size() / 2); i++)
 	{
@@ -106,12 +105,12 @@ double	ford_johnson_algorithm(T & container)
 	T	first_half(container.begin(), mid);
 	T	second_half(mid, container.end());
 	
-	start = clock();
+	time = clock();
 	insertion_sort(first_half);
 	insertion_sort(second_half);
 	merge_sort(container, first_half, second_half);
-	end = clock();
-	return (static_cast<float>(end - start) / CLOCKS_PER_SEC * 1e6);
+	time = clock() - time;
+	return ((static_cast<float>(time) / CLOCKS_PER_SEC) * 1e6);
 }
 
 template<typename T>
