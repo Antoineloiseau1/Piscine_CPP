@@ -33,14 +33,21 @@ bool check_value(float value)
 
 bool check_date(std::string date)
 {
-	int			value[3];
-	std::string	token;
-	bool		error = false;
-	int			i = 0;
-	std::istringstream iss(date);
+	int					value[3];
+	std::string			token;
+	bool				error = false;
+	int					i = 0;
+	std::istringstream	iss(date);
 
+	if(date.size() < 10 || date.size() > 11)
+		error = true;
+	if(date[4] != '-' || date[7] != '-')
+		error = true;
 	while(std::getline(iss, token, '-') && i < 3)
 	{
+		size_t found = token.find_first_not_of(" 0123456789");
+		if(found != std::string::npos)
+			error = true;
 		std::istringstream(token) >> value[i];
 		i++;
 	}
