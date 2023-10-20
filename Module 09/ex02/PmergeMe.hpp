@@ -11,7 +11,7 @@
 
 void						PmergeMe(char **argv);
 std::vector<std::string>	extractArgs(char **argv);
-bool						check_errors(std::vector<std::string> & args);
+void						check_errors(std::vector<std::string> & args);
 
 template<typename T>
 void	print_container(T & container)
@@ -124,6 +124,11 @@ T	extractNumbers(std::vector<std::string> & args)
 			container.push_back(atoi(token.c_str()));
 		}
 		iss.clear();
+	}
+	if(container.size() < 2)
+	{
+		std::cerr << "Error\n";
+		exit(1);
 	}
 	return container;
 }

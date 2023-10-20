@@ -11,17 +11,10 @@ void PmergeMe(char **argv)
 	std::deque<int>				d;
 	float						time_stamp;
 
-	if (check_errors(args))
-	{
-		return ;
-	}
+	check_errors(args);
 	v = extractNumbers<std::vector<int> >(args);
 	d = extractNumbers<std::deque<int> >(args);
-	if(v.size() < 2)
-	{
-		std::cerr << "Error\n";
-		exit(1);
-	}
+
 	std::cout << "Before:\t";
 	print_container(d);
 	std::cout << "After:\t";
@@ -44,7 +37,7 @@ std::vector<std::string>	extractArgs(char **argv)
 	return args;
 }
 
-bool	check_errors(std::vector<std::string> & args)
+void	check_errors(std::vector<std::string> & args)
 {
 	
 	std::istringstream 					iss;
@@ -60,11 +53,10 @@ bool	check_errors(std::vector<std::string> & args)
 			if(found != std::string::npos)
 			{
 				std::cout << "Error\n";
-				return true;
+				exit(1);
 			}
 		}
 		iss.clear();
 	}
-	return false;
 }
 
