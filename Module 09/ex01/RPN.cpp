@@ -87,6 +87,12 @@ void	compute_expression(std::stack<int> & s, std::string & token)
 	}
 	else
 	{
+		//Division By Zero
+		if(rhs == 0)
+		{
+			std::cerr << "Error\n";
+			exit(1);
+		}
 		s.push(lhs / rhs);
 	}
 }
