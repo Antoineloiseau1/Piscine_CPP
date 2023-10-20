@@ -17,6 +17,11 @@ void PmergeMe(char **argv)
 	}
 	v = extractNumbers<std::vector<int> >(args);
 	d = extractNumbers<std::deque<int> >(args);
+	if(v.size() < 2)
+	{
+		std::cerr << "Error\n";
+		exit(1);
+	}
 	std::cout << "Before:\t";
 	print_container(d);
 	std::cout << "After:\t";
