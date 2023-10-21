@@ -2,6 +2,8 @@ NAME	=	btc
 
 SRCS	=	main.cpp BitcoinExchange.cpp
 
+HDRS	=	BitcoinExchange.hpp
+
 OBJS	=	${SRCS:.cpp=.o}
 
 CC		=	c++ -std=c++98
@@ -15,7 +17,7 @@ RM		=	rm -rf
 
 all:		${NAME}
 
-${NAME}:	${OBJS}
+${NAME}:	${OBJS} ${HDRS}
 			${CC} ${FLAGS} ${OBJS} -o ${NAME}
 
 clean:

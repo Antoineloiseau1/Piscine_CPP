@@ -63,3 +63,21 @@ bool check_date(std::string date)
 		std::cout << "Error: bad input => " << date << std::endl;
 	return(!error);
 }
+
+void	erase_space(std::string & str)
+{
+	int i = 0;
+
+	while(str[i])
+	{
+		if(str[i] == ' ' || str[i] == '\t')
+		{
+			str.erase(i, 1);
+			i = 0;
+		}
+		else
+		{
+			i++;
+		}
+	}
+}

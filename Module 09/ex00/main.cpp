@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 			}
 			if (check_value(it->second))
 			{
-				std::cout << it->first << "=> " << it->second << " = ";
+				std::cout << it->first << " => " << it->second << " = ";
 				std::cout << it->second * needle->second << std::endl;
 			}
 		}
