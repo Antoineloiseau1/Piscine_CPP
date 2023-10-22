@@ -3,7 +3,13 @@
 time_t	str_to_time(std::string str)
 {
 	struct tm	tm;
-
+	
+	tm.tm_mday = 0;
+	tm.tm_mon = 0;
+	tm.tm_year = 0;
+	tm.tm_wday = 0;
+	tm.tm_yday = 0;
+	tm.tm_isdst = 0;
 	strptime(str.c_str(), "%Y-%m-%d", &tm);
 	tm.tm_sec = 0;
 	tm.tm_min = 0;
@@ -16,12 +22,12 @@ bool check_value(float value)
 {
 	if (value <= 0)
 	{
-		std::cout << "Error: not a positive number\n";
+		std::cout << "Error: not a positive number";
 		return false;
 	}
 	else if (value > 1000)
 	{
-		std::cout << "Error: too large a number" << std::endl;
+		std::cout << "Error: too large a number";
 		return false;
 	}
 	else
@@ -39,7 +45,7 @@ bool check_date(std::string date)
 	int					i = 0;
 	std::istringstream	iss(date);
 
-	if(date.size() < 10 || date.size() > 11)
+	if(date.size() != 10)
 		error = true;
 	if(date[4] != '-' || date[7] != '-')
 		error = true;

@@ -44,6 +44,10 @@ int main(int argc, char *argv[])
 				std::cout << it->first << " => " << it->second << " = ";
 				std::cout << it->second * needle->second << std::endl;
 			}
+			else
+			{
+				std::cout << ": " << it->first << " => " << it->second << std::endl;
+			}
 		}
 	}
 	return 0;
