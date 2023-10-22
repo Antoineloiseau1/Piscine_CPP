@@ -2,6 +2,8 @@ NAME	=	RPN
 
 SRCS	=	main.cpp RPN.cpp
 
+HDRS	=	RPN.hpp
+
 OBJS	=	${SRCS:.cpp=.o}
 
 CC		=	c++ -std=c++98
@@ -15,7 +17,7 @@ RM		=	rm -rf
 
 all:		${NAME}
 
-${NAME}:	${OBJS}
+${NAME}:	${HDRS} ${OBJS}
 			${CC} ${FLAGS} ${OBJS} -o ${NAME}
 
 clean:

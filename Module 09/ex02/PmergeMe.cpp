@@ -20,9 +20,9 @@ void PmergeMe(char **argv)
 	std::cout << "After:\t";
 	time_stamp = ford_johnson_algorithm(d);
 	print_container(d);
-	std::cout << "Time to process a range of\t" << d.size();
+	std::cout << "Time to process a range of " << d.size();
 	std::cout << " elements with std::deque: " << time_stamp << " µs" << std::endl;
-	std::cout << "Time to process a range of\t" << v.size();
+	std::cout << "Time to process a range of " << v.size();
 	std::cout << " elements with std::vector: " << ford_johnson_algorithm(v) << " µs" << std::endl;
 }
 
